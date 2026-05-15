@@ -2,6 +2,7 @@
 Groupe 10 - MGA802-01 ETE26
 Projet A - Chiffrement de César
 """
+import unicodedata
 
 #Fonctions de configuration -----------------------------------------------------------------------------------------
 """Cette fonction permet à l'utilisateur de dire s'il possède une clé et de l'entrer
@@ -34,4 +35,11 @@ def encrypter_ou_decrypter():
         else:
             print("Erreur: Veuillez répondre 'encrypter' ou 'decrypter'")
     return cryptage
+
+#Cette fonction supprime les accents de la chaîne de caractères fournie en paramètre et la retourne sans accent
+def supprimer_accents(texte):
+    forme_nfd = unicodedata.normalize('NFD', texte)
+    texte_propre = "".join(c for c in forme_nfd if unicodedata.category(c) != 'Mn')
+    return texte_propre
+
 
