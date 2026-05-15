@@ -22,3 +22,16 @@ def entrer_cle():
             except ValueError:
                 print("Erreur: vous devez entrer un entier valide")
     return cle
+
+#Fonction qui retourne True si l'utilisateur souhaite encrypter son texte, False s'il souhaite le décrypter
+def encrypter_ou_decrypter():
+    saisie_valide=False
+    while not saisie_valide:
+        saisie=str(input("Souhaitez-vous encrypter ou décrypter ce texte ?")).lower().strip()
+        if saisie in ["encrypter", "decrypter", "décrypter"]:
+            saisie_valide=True
+            cryptage=saisie.startswith('e')
+        else:
+            print("Erreur: Veuillez répondre 'encrypter' ou 'decrypter'")
+    return cryptage
+
